@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Book;
 
+use JWTAuth;
+
 class BookController extends Controller
 {
     /**
@@ -21,6 +23,10 @@ class BookController extends Controller
         }else{
             return response(['message' => 'Data not found.', 'data' => null], 404);
         }
+    }
+
+    public function __construct() {
+        $this->middleware('auth:api');
     }
 
     /**
